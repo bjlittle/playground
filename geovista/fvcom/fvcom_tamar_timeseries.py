@@ -1,12 +1,14 @@
-import netCDF4 as nc
+"""Render FVCOM of Tamar & Sound (PML) time-series."""
 from cf_units import Unit
+import netCDF4 as nc
 
 import geovista as gv
 from geovista.qt import GeoBackgroundPlotter
 import geovista.theme
 
 
-def callback():
+def callback() -> None:
+    """Reel callback."""
     global t
     global mesh
     global layer
@@ -26,7 +28,7 @@ def callback():
     mesh.GetPointData().SetActiveNormals("Normals")
     mesh.points = points
     tmp = eta[t].data
-    ocean = tmp + sigma*(depth+tmp)
+    ocean = tmp + sigma * (depth + tmp)
     mesh.point_data["ocean"] = ocean
     mesh.warp_by_scalar(scalars="ocean", inplace=True, factor=factor)
 
@@ -57,10 +59,12 @@ depth = ds.variables["h"][:].data
 mesh = gv.Transform.from_unstructured(lons, lats, connectivity.T)
 
 tmp = eta[t].data
-ocean = tmp + sigma*(depth+tmp)
+ocean = tmp + sigma * (depth + tmp)
 
 mesh.point_data["ocean"] = ocean
-mesh.compute_normals(cell_normals=False, point_normals=True, inplace=True, flip_normals=True)
+mesh.compute_normals(
+    cell_normals=False, point_normals=True, inplace=True, flip_normals=True
+)
 normals = mesh["Normals"]
 points = mesh.points.copy()
 mesh.warp_by_scalar(scalars="ocean", inplace=True, factor=factor)
@@ -70,9 +74,11 @@ clim_temp = (7.790735, 16.898006)
 clim_salinity = (1.0, 35.182487)
 
 plotter = GeoBackgroundPlotter()
-sargs = dict(title=f"Sea Water Salinity / 1e-3")
+sargs = {"title": "Sea Water Salinity / 1e-3"}
 cmap = "haline"
-plotter.add_mesh(mesh, show_edges=True, cmap=cmap, clim=clim_salinity, scalar_bar_args=sargs)
+plotter.add_mesh(
+    mesh, show_edges=True, cmap=cmap, clim=clim_salinity, scalar_bar_args=sargs
+)
 text = time[t].strftime(fmt)
 actor = plotter.add_text(text, position="upper_right", font_size=10, shadow=True)
 plotter.add_callback(callback, interval=250)
