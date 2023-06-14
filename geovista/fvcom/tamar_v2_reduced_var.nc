@@ -1,1 +1,0 @@
-/home/bill/Downloads/tamar_v2_reduced_var.nc
