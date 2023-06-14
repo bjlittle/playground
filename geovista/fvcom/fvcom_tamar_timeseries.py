@@ -70,7 +70,7 @@ clim_temp = (7.790735, 16.898006)
 clim_salinity = (1.0, 35.182487)
 
 plotter = GeoBackgroundPlotter()
-sargs = dict(title=f"Sea Water Salinity / 1e-3")
+sargs = dict(title="Sea Water Salinity / 1e-3")
 cmap = "haline"
 plotter.add_mesh(mesh, show_edges=True, cmap=cmap, clim=clim_salinity, scalar_bar_args=sargs)
 text = time[t].strftime(fmt)
