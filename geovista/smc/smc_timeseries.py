@@ -4,6 +4,7 @@ from iris import NameConstraint
 import numpy as np
 
 import geovista as gv
+from geovista.pantry import capitalise
 from geovista.qt import GeoBackgroundPlotter
 import geovista.theme
 
@@ -62,7 +63,7 @@ mesh = gv.Transform.from_unstructured(
 )
 
 plotter = GeoBackgroundPlotter()
-sargs = {"title": f"{cube.name()} / {cube.units}"}
+sargs = {"title": f"{capitalise(cube.name())} / {cube.units}", "shadow": True}
 plotter.add_mesh(mesh, scalar_bar_args=sargs)
 resolution = "10m"
 plotter.add_coastlines(resolution=resolution, color="white")

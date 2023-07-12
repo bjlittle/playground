@@ -1,0 +1,11 @@
+name: iris-geovista-qt
+
+channels:
+  - conda-forge
+
+dependencies:
+
+  - geovista
+  - iris
+  - pyqt
+  - pyvistaqt
