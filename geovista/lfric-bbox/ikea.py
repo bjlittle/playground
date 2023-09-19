@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Extract C48 panels and render as flat-pack."""
 import sys
 
@@ -220,7 +221,7 @@ if threshold:
     arctic = cast(arctic.threshold())
     antarctic = cast(antarctic.threshold())
 
-vector = (0, 0, -0.25)
+vector = (0, 0, -0.1)
 africa.extrude(vector, capping=True, inplace=True)
 asia.extrude(vector, capping=True, inplace=True)
 pacific.extrude(vector, capping=True, inplace=True)
