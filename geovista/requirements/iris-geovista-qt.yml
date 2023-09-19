@@ -6,6 +6,9 @@ channels:
 dependencies:
 
   - geovista
+  - pyvista<0.42.2
   - iris
+  - pandas
+  - fastparquet
   - pyqt
   - pyvistaqt
