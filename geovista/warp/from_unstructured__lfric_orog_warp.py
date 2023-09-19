@@ -41,4 +41,4 @@ plotter.add_text(
 )
 plotter.camera.position = (41765188.91567403, -19595227.412923645, 20684232.927517064)
 plotter.show()
-print(plotter.camera.position)
+# print(plotter.camera.position)
