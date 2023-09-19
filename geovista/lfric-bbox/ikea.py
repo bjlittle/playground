@@ -1,3 +1,4 @@
+"""Extract C48 panels and render as flat-pack."""
 import sys
 
 import numpy as np
@@ -9,6 +10,7 @@ import geovista.theme
 
 
 def africa_panel():
+    """Extract the africa cube-sphere panel and flatten."""
     bbox = geovista.geodesic.panel("africa")
     panel = bbox.enclosed(mesh)
     N = np.sqrt(panel.n_points)
@@ -35,6 +37,7 @@ def africa_panel():
 
 
 def asia_panel():
+    """Extract the asia cube-sphere panel and flatten."""
     bbox = geovista.geodesic.panel("asia")
     panel = bbox.enclosed(mesh)
     N = np.sqrt(panel.n_points)
@@ -61,6 +64,7 @@ def asia_panel():
 
 
 def pacific_panel():
+    """Extract the pacific cube-sphere panel and flatten."""
     bbox = geovista.geodesic.panel("pacific")
     panel = bbox.enclosed(mesh)
     N = np.sqrt(panel.n_points)
@@ -87,6 +91,7 @@ def pacific_panel():
 
 
 def americas_panel():
+    """Extract the americas cube-sphere panel and flatten."""
     bbox = geovista.geodesic.panel("americas")
     panel = bbox.enclosed(mesh)
     N = np.sqrt(panel.n_points)
@@ -113,6 +118,7 @@ def americas_panel():
 
 
 def arctic_panel():
+    """Extract the arctic cube-sphere panel and flatten."""
     bbox = geovista.geodesic.panel("arctic")
     panel = bbox.enclosed(mesh)
     N = np.sqrt(panel.n_points)
@@ -143,6 +149,7 @@ def arctic_panel():
 
 
 def antarctic_panel():
+    """Extract the antarctic cube-sphere panel and flatten."""
     bbox = geovista.geodesic.panel("antarctic")
     panel = bbox.enclosed(mesh)
     N = np.sqrt(panel.n_points)
@@ -179,7 +186,12 @@ clim = (np.nanmin(sst), np.nanmax(sst))
 
 plotter = pv.Plotter()
 
-kwargs = {"lighting": False, "show_scalar_bar": False, "clim": clim, "show_edges": False}
+kwargs = {
+    "lighting": False,
+    "show_scalar_bar": False,
+    "clim": clim,
+    "show_edges": False,
+}
 
 
 africa = africa_panel()
@@ -224,7 +236,7 @@ _ = plotter.add_mesh(arctic, **kwargs)
 _ = plotter.add_mesh(antarctic, **kwargs)
 
 plotter.add_text(
-    f"LFRic C48 Unstructured Cube-Sphere (IKEA)",
+    "LFRic C48 Unstructured Cube-Sphere (IKEA)",
     position="upper_left",
     font_size=10,
     shadow=True,
