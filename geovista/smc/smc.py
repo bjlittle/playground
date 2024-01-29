@@ -1,4 +1,5 @@
 """Render Spherical Multi-Cell."""
+
 import iris
 from iris import NameConstraint
 import numpy as np
