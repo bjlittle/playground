@@ -33,14 +33,14 @@ repos:
     - id: trailing-whitespace
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.4.4"
+    rev: "v0.4.5"
     hooks:
       - id: ruff
         types: [file, python]
         args: [--fix]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: "v2.2.6"
+    rev: "v2.3.0"
     hooks:
     - id: codespell
       types_or: [python, markdown, rst]
