@@ -2,7 +2,7 @@ name: ci-codeowners
 
 on:
   pull_request_target:
-    types: [opened]
+    types: [opened, reopened]
 
   issue_comment:
     types: [created]
@@ -10,12 +10,20 @@ on:
   pull_request_review:
     types: [submitted]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credintials: false
+
       - name: Run Codeowners merge check
         uses: OSS-Docs-Tools/code-owner-self-merge@1.6.8
         env:
