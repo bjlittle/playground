@@ -10,7 +10,7 @@ jobs:
     name: PR comment
     if: github.event.issue.pull_request &&
       contains(github.event.comment.body, '@geovista-bot LGTM') && (
-      github.event.comment.user.login == 'bjlittle' 
+      github.event.comment.user.login == 'bjlittle'
       )
     permissions:
       pull-requests: write
