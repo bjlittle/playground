@@ -20,4 +20,4 @@ jobs:
           pull-request-number: ${{ github.event.issue.number }}
           github-token: ${{ secrets.GEOVISTA_BOT_TOKEN }}
           review-message: |
-            Approving this pull-request as ${{ github.event.comment.user.login }} requested it [in this comment](${{ github.event.comment.html_url }}).
+            Approving this pull-request as @${{ github.event.comment.user.login }} requested it [in this comment](${{ github.event.comment.html_url }}).
