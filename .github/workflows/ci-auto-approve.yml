@@ -15,11 +15,19 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const commentId = context.payload.comment.id;
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: commentId,
+              content: "rocket"
+            });
       - uses: hmarr/auto-approve-action@f0939ea97e9205ef24d872e76833fa908a770363
         with:
           pull-request-number: ${{ github.event.issue.number }}
           github-token: ${{ secrets.GEOVISTA_BOT_TOKEN }}
           review-message: |
             :white_check_mark: Approving this pull-request as @${{ github.event.comment.user.login }} requested it [in this comment](${{ github.event.comment.html_url }}).
-
-            LGTM :+1:
