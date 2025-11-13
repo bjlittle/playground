@@ -8,8 +8,10 @@ jobs:
   autoapprove:
     # This job only runs for pull request comments by approved users on creation
     name: PR comment
-    if: github.event.issue.pull_request &&
-      contains(github.event.comment.body, '@geovista-bot LGTM') && (
+    if: github.event.issue.pull_request && (
+      contains(github.event.comment.body, '@geovista-bot LGTM') ||
+      contains(github.event.comment.body, '@geovista-bot lgtm')
+      ) && (
       github.event.comment.user.login == 'bjlittle'
       )
     permissions:
@@ -18,6 +20,6 @@ jobs:
     steps:
       - uses: hmarr/auto-approve-action@f0939ea97e9205ef24d872e76833fa908a770363
         with:
-          review-message: ":white_check_mark: Approving this PR because [${{ github.event.comment.user.login }}](https://github.com/${{ github.event.comment.user.login }}) said so in [here](${{ github.event.comment.html_url }}) :shipit:"
+          review-message: ":white_check_mark: Approving this pull-request as @${{ github.event.comment.user.login }} requested it [in this comment](${{ github.event.comment.html_url }})."
           pull-request-number: ${{ github.event.issue.number }}
           github-token: ${{ secrets.GEOVISTA_BOT_TOKEN }}
