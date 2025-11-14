@@ -4,30 +4,55 @@ on:
   issue_comment:
     types: [created]
 
+permissions:
+  pull-requests: write
+
 jobs:
-  autoapprove:
-    # This job only runs for pull request comments by approved users on creation
-    name: PR comment
+  approve:
+    name: "auto-approve"
     if: github.event.issue.pull_request &&
       contains(github.event.comment.body, '@geovista-bot auto-approve') &&
       github.event.comment.user.login == 'bjlittle'
-    permissions:
-      pull-requests: write
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/github-script@v7
+      - uses: peter-evans/create-or-update-comment@v5
         with:
-          script: |
-            const commentId = context.payload.comment.id;
-            await github.rest.reactions.createForIssueComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: commentId,
-              content: "rocket"
-            });
+          comment-id: ${{ github.event.comment.id }}
+          token: ${{ secrets.GEOVISTA_BOT_TOKEN }}
+          reactions: rocket
+
       - uses: hmarr/auto-approve-action@f0939ea97e9205ef24d872e76833fa908a770363
         with:
           pull-request-number: ${{ github.event.issue.number }}
           github-token: ${{ secrets.GEOVISTA_BOT_TOKEN }}
           review-message: |
-            :white_check_mark: Approving this pull-request as @${{ github.event.comment.user.login }} requested it [in this comment](${{ github.event.comment.html_url }}).
+            :white_check_mark: I approved this pull-request! :sparkles:
+
+            As requested by @${{ github.event.comment.user.login }} in this [comment](${{ github.event.comment.html_url }}).
+
+  deny:
+    needs: [approve]
+    name: "auto-deny"
+    if: ${{ needs.approve.result == 'skipped' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: peter-evens/create-or-update-comment@v5
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          token: ${{ secrets.GEOVISTA_BOT_TOKEN }}
+          reactions: '-1'
+
+      - uses: peter-evans/create-or-update-comment@v5
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          token: ${{ secrets.GEOVISTA_BOT_TOKEN }}
+          body: |
+            :x: Dang! I can't approve this pull-request! :cry:
+
+            You don't have sufficent permissions.
+
+            As requested by @${{ github.event.comment.user.login }} in this [comment](${{ github.event.comment.html_url }}).
