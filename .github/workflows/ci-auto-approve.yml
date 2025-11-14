@@ -29,7 +29,7 @@ jobs:
           github-token: ${{ secrets.GEOVISTA_BOT_TOKEN }}
           review-message: |
             :white_check_mark: I approved this pull-request! :sparkles:
-            
+
             As requested by @${{ github.event.comment.user.login }} in this [comment](${{ github.event.comment.html_url }}).
 
   deny:
@@ -38,7 +38,7 @@ jobs:
     if: ${{ needs.approve.result == 'skipped' }}
 
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: peter-evens/create-or-update-comment@v5
         with:
