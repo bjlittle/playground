@@ -35,7 +35,7 @@ jobs:
   deny:
     needs: [approve]
     name: "auto-deny"
-    if: ${{ needs.approve.result == 'skipped' || needs.approve.result == 'failure' }}
+    if: ${{ always() && (needs.approve.result == 'skipped' || needs.approve.result == 'failure') }}
 
     runs-on: ubuntu-latest
 
