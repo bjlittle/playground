@@ -28,6 +28,7 @@ jobs:
           else
             echo "valid=false" >> $GITHUB_OUTPUT
             echo "reaction=-1" >> $GITHUB_OUTPUT
+          fi
 
       - name: "reaction"
         uses: peter-evans/create-or-update-comment@v5
