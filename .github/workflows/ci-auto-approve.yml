@@ -22,7 +22,7 @@ jobs:
       - name: "verify"
         id: verify
         run: |
-          if [[ "${{ github.event.comment.user.login }}" == "bjlittle" ]]; then
+          if [[ "${{ github.event.comment.user.login }}" == "bjlittlex" ]]; then
             echo "valid=true" >> $GITHUB_OUTPUT
             echo "reaction=rocket" >> $GITHUB_OUTPUT
             {
