@@ -1,0 +1,50 @@
+name: Welcome with reactions
+
+on:
+  issues:
+    types: opened
+  pull_request_target:
+    types: opened
+
+permissions: {}
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      uses: plbstl/first-contribution@v4
+      with:
+        token: ${{ secrets.GEOVISTA_BOT_FIRST_CONTRIBUTION }}
+
+        issue-reactions: eyes, hooray
+        pr-reactions: eyes, hooray
+        issue-labels: first-issue
+        pr-labels: first-pull-request
+
+        issue-opened-msg: |
+          Hey @{fc-author}!
+
+          Congrats! Your first issue :tada:
+
+          Welcome and thanks for taking the time to feedback and tell us how to improve `geovista` :heart:
+
+          Please check out our [Code of Conduct](https://github.com/bjlittle/geovista/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guide](https://geovista.readthedocs.io/en/latest/developer/index.html) to learn how to interact with and contribute to the `geovista` community.
+
+        pr-opened-msg: |
+          Hey @{fc-author}!
+
+          Awesome! Your first pull-request! :partying_face:
+
+          Welcome and thanks for taking the time to contribute to `geovista` :heart:
+
+          Make sure to check out our [Code of Conduct](https://github.com/bjlittle/geovista/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guide](https://geovista.readthedocs.io/en/latest/developer/index.html) to learn how to interact and contribute to the `geovista` community.
+
+        pr-merged-msg: |
+          Hey @{fc-author}!
+
+          Congrats on banking your first `geovista` pull-request!
+
+          Let the good times roll! 🤟
