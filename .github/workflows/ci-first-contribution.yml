@@ -15,36 +15,36 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      uses: plbstl/first-contribution@v4
-      with:
-        token: ${{ secrets.GEOVISTA_BOT_FIRST_CONTRIBUTION }}
+      - uses: plbstl/first-contribution@4b2b042fffa26792504a18e49aa9543a87bec077
+        with:
+          token: ${{ secrets.GEOVISTA_BOT_FIRST_CONTRIBUTION }}
 
-        issue-reactions: eyes, hooray
-        pr-reactions: eyes, hooray
-        issue-labels: first-issue
-        pr-labels: first-pull-request
+          issue-reactions: eyes, hooray
+          pr-reactions: eyes, hooray
+          issue-labels: first-issue
+          pr-labels: first-pull-request
 
-        issue-opened-msg: |
-          Hey @{fc-author}!
+          issue-opened-msg: |
+            Hey @{fc-author}!
 
-          Congrats! Your first issue :tada:
+            Congrats! Your first issue :tada:
 
-          Welcome and thanks for taking the time to feedback and tell us how to improve `geovista` :heart:
+            Welcome and thanks for taking the time to feedback and tell us how to improve `geovista` :heart:
 
-          Please check out our [Code of Conduct](https://github.com/bjlittle/geovista/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guide](https://geovista.readthedocs.io/en/latest/developer/index.html) to learn how to interact with and contribute to the `geovista` community.
+            Please check out our [Code of Conduct](https://github.com/bjlittle/geovista/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guide](https://geovista.readthedocs.io/en/latest/developer/index.html) to learn how to interact with and contribute to the `geovista` community.
 
-        pr-opened-msg: |
-          Hey @{fc-author}!
+          pr-opened-msg: |
+            Hey @{fc-author}!
 
-          Awesome! Your first pull-request! :partying_face:
+            Awesome! Your first pull-request! :partying_face:
 
-          Welcome and thanks for taking the time to contribute to `geovista` :heart:
+            Welcome and thanks for taking the time to contribute to `geovista` :heart:
 
-          Make sure to check out our [Code of Conduct](https://github.com/bjlittle/geovista/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guide](https://geovista.readthedocs.io/en/latest/developer/index.html) to learn how to interact and contribute to the `geovista` community.
+            Make sure to check out our [Code of Conduct](https://github.com/bjlittle/geovista/blob/main/CODE_OF_CONDUCT.md) and [Contribution Guide](https://geovista.readthedocs.io/en/latest/developer/index.html) to learn how to interact and contribute to the `geovista` community.
 
-        pr-merged-msg: |
-          Hey @{fc-author}!
+          pr-merged-msg: |
+            Hey @{fc-author}!
 
-          Congrats on banking your first `geovista` pull-request!
+            Congrats on banking your first `geovista` pull-request!
 
-          Let the good times roll! 🤟
+            Let the good times roll! 🤟
