@@ -18,7 +18,7 @@ jobs:
       uses: plbstl/first-contribution@v4
       with:
         token: ${{ secrets.GEOVISTA_BOT_FIRST_CONTRIBUTION }}
-        
+
         issue-reactions: eyes, hooray
         pr-reactions: eyes, hooray
         issue-labels: first-issue
