@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Importable and runnable geovista example."""
+
 from __future__ import annotations
 
 from pyproj import CRS
