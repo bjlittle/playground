@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Extract C48 panels and render as flat-pack."""
+
 import sys
 
 import numpy as np
