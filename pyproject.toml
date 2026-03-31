@@ -1,27 +1,25 @@
-[tool.black]
-line-length = 88
-target-version = ["py311"]
-include = '\.pyi?$'
+[project]
+requires-python = ">=3.12"
 
-
-[tool.check-manifest]
-ignore = [
-    "src/geovista/_version.py",
-]
-
-
-[tool.codespell]
-skip = ".git,*.ipynb"
 
 
 [tool.ruff]
-ignore = [
-    "D105",  # pydocstyle: undocumented-magic-method
-]
 extend-exclude = [
     "docs",
 ]
 line-length = 88
+src = ["geovista"]
+
+
+[tool.ruff.format]
+docstring-code-format = true
+preview = false
+
+
+[tool.ruff.lint]
+ignore = [
+    "D105",  # pydocstyle: undocumented-magic-method
+]
 select = [
     "B",   # flake8-bugbear
     "C4",  # flake8-comprehensions
@@ -32,17 +30,16 @@ select = [
     "F",   # pyflakes
     "UP",  # pyupgrade
 ]
-target-version = "py311"
 
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 force-sort-within-sections = true
 known-first-party = ["geovista"]
 
 
-[tool.ruff.mccabe]
+[tool.ruff.lint.mccabe]
 max-complexity = 22
 
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "numpy"

@@ -1,3 +1,5 @@
+"""geovista title generation."""
+
 import drawsvg as draw
 
 brand = "rgb(128,208,80)"

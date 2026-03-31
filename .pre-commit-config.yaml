@@ -4,6 +4,10 @@
 
 ci:
   autofix_prs: false
+  autofix_commit_msg: "style: pre-commit.ci auto-fixes"
+  autoupdate_commit_msg: "chore: update pre-commit hooks"
+  autoupdate_schedule: "weekly"
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: "v6.0.0"
@@ -38,6 +42,8 @@ repos:
       - id: ruff-check
         types: [file, python]
         args: [--fix, --show-fixes]
+      - id: ruff-format
+        types: [file, python]
 
   - repo: https://github.com/codespell-project/codespell
     rev: "v2.4.2"
@@ -45,16 +51,3 @@ repos:
     - id: codespell
       types_or: [python, markdown, rst]
       additional_dependencies: [tomli]
-
-  - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: "26.3.1"
-    hooks:
-      - id: black
-        types: [file, python]
-        args: [--config=./pyproject.toml]
-
-  - repo: https://github.com/aio-libs/sort-all
-    rev: "v1.3.0"
-    hooks:
-      - id: sort-all
-        types: [file, python]

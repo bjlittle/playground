@@ -1,3 +1,5 @@
+"""geovista embedded title generation."""
+
 import drawsvg as draw
 
 brand = "rgb(128,208,80)"
@@ -332,8 +334,13 @@ group.append(p)
 
 logo = draw.Group(transform="scale(0.095) translate(1528, 295)")
 
-# draw gull 
-p = draw.Path(fill=light_yellow, stroke='grey', stroke_width=stroke_width, preserveAspectRatio="xMidYMid meet")
+# draw gull
+p = draw.Path(
+    fill=light_yellow,
+    stroke="grey",
+    stroke_width=stroke_width,
+    preserveAspectRatio="xMidYMid meet",
+)
 p.M(466.82, 163.28)
 p.c(3.91, 0.63, 18.57, 3.54, 28.48, 16.54)
 p.c(3.66, 4.81, 5.56, 9.53, 6.57, 12.74)
@@ -480,7 +487,7 @@ p.Z()
 logo.append(p)
 
 # draw splash
-p = draw.Path(fill=light_yellow, stroke='grey', stroke_width=stroke_width)
+p = draw.Path(fill=light_yellow, stroke="grey", stroke_width=stroke_width)
 p.M(348.72, 262.38)
 p.c(1.04, -1.19, 0.81, -1.75, 0.72, -3.23)
 p.c(-20.76, 2.23, -38.7, 17.27, -52.13, 32.4)
@@ -505,7 +512,7 @@ p.Z()
 logo.append(p)
 
 # draw droplet
-p = draw.Path(fill=light_yellow, stroke='grey', stroke_width=stroke_width)
+p = draw.Path(fill=light_yellow, stroke="grey", stroke_width=stroke_width)
 p.M(310.05, 178.61)
 p.c(3.14, 0.0, 5.68, -2.54, 5.68, -5.68)
 p.s(-2.54, -5.68, -5.68, -5.68)
@@ -535,11 +542,19 @@ p.Z()
 logo.append(p)
 
 # draw droplet
-c = draw.Circle(303.28, 198.86, r=4.47, transform="translate(95.05,495.79) rotate(-88.21)", fill=light_yellow, stroke='grey', stroke_width=stroke_width)
+c = draw.Circle(
+    303.28,
+    198.86,
+    r=4.47,
+    transform="translate(95.05,495.79) rotate(-88.21)",
+    fill=light_yellow,
+    stroke="grey",
+    stroke_width=stroke_width,
+)
 logo.append(c)
 
 # draw droplet
-p = draw.Path(fill=light_yellow, stroke='grey', stroke_width=stroke_width)
+p = draw.Path(fill=light_yellow, stroke="grey", stroke_width=stroke_width)
 p.M(566.8, 171.42)
 p.c(2.47, 0.0, 4.47, -2.0, 4.47, -4.47)
 p.s(-2, -4.47, -4.47, -4.47)
@@ -549,7 +564,7 @@ p.Z()
 logo.append(p)
 
 # draw droplet
-p = draw.Path(fill=light_yellow, stroke='grey', stroke_width=stroke_width)
+p = draw.Path(fill=light_yellow, stroke="grey", stroke_width=stroke_width)
 p.M(529.68, 157.77)
 p.c(2.32, -2.32, 2.32, -6.09, 0.0, -8.42)
 p.c(-2.32, -2.32, -6.09, -2.32, -8.42, 0.0)
@@ -559,7 +574,7 @@ p.Z()
 logo.append(p)
 
 # draw droplet
-p = draw.Path(fill=light_yellow, stroke='grey', stroke_width=stroke_width)
+p = draw.Path(fill=light_yellow, stroke="grey", stroke_width=stroke_width)
 p.M(557.14, 151.98)
 p.c(2.41, 0.0, 4.36, -1.95, 4.36, -4.36)
 p.s(-1.95, -4.36, -4.36, -4.36)
@@ -569,15 +584,30 @@ p.Z()
 logo.append(p)
 
 # draw droplet
-c = draw.Circle(411.96, 183.78, r=5.68, fill=light_blue, stroke=light_yellow, stroke_width=stroke_width)
+c = draw.Circle(
+    411.96,
+    183.78,
+    r=5.68,
+    fill=light_blue,
+    stroke=light_yellow,
+    stroke_width=stroke_width,
+)
 logo.append(c)
 
 # draw droplet
-c = draw.Circle(333.94, 220.26, r=5.68, transform="translate(-41.67,82.61) rotate(-13.28)", fill=light_blue, stroke=light_yellow, stroke_width=stroke_width)
+c = draw.Circle(
+    333.94,
+    220.26,
+    r=5.68,
+    transform="translate(-41.67,82.61) rotate(-13.28)",
+    fill=light_blue,
+    stroke=light_yellow,
+    stroke_width=stroke_width,
+)
 logo.append(c)
 
 #
-p = draw.Path(fill=light_yellow, stroke="grey", stroke_width=stroke_width) 
+p = draw.Path(fill=light_yellow, stroke="grey", stroke_width=stroke_width)
 p.M(567.47, 615.87)
 p.c(16.18, 3.32, 29.07, 13.5, 44.41, 17.26)
 p.c(26.5, 6.51, 50.25, -0.62, 76.26, -2.86)
@@ -693,7 +723,14 @@ p.Z()
 logo.append(p)
 
 # draw rising sun
-c = draw.Circle(690, 460, r=50, transform="translate(-41.67,82.61) rotate(-13.28)", fill="rgb(194,75,49)", stroke="none")
+c = draw.Circle(
+    690,
+    460,
+    r=50,
+    transform="translate(-41.67,82.61) rotate(-13.28)",
+    fill="rgb(194,75,49)",
+    stroke="none",
+)
 logo.append(c)
 
 c = draw.Circle(480, 400, r=7, fill=teal, stroke="none")
@@ -709,9 +746,13 @@ c = draw.Circle(500, 380, r=3, fill=teal, stroke="none")
 logo.append(c)
 
 
-
 # draw inner mountains
-p = draw.Path(fill="rgb(169,59,37)", stroke="none", fill_opacity=0.9, transform="translate(490, 340) scale(0.2)")
+p = draw.Path(
+    fill="rgb(169,59,37)",
+    stroke="none",
+    fill_opacity=0.9,
+    transform="translate(490, 340) scale(0.2)",
+)
 p.M(150.234375, 890.125)
 p.L(344.429688, 691.390625)
 p.L(390.886719, 728.539062)
@@ -721,7 +762,7 @@ p.L(719.8125, 540.949219)
 p.L(842.457031, 685.820312)
 p.L(964.179688, 556.738281)
 p.L(1100.765625, 674.675781)
-p.L(1148.148438, 640.316406) 
+p.L(1148.148438, 640.316406)
 p.L(1349.78125, 826.972656)
 p.L(1149.078125, 693.25)
 p.L(1202.039062, 813.972656)
